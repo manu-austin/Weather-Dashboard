@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added link for icon library -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Added link for bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Added link for my css file -->
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title>Wheather-Dashboard</title>
+</head>
+
+<body>
+
+    <!-- header top of the screen in black with Weather Dashboard title -->
+    <header>
+        <!-- line-height gets title in the center of the box -->
+        <div style="line-height: 60px;height: 60px; text-align: center; font-weight: bold; margin-top: 10px; font-size:30px; background-color:black; color:white">Weather Dashboard</div>
+    </header>
+
+    <!-- left side of screen -->
+    <div class="col-md-4" style="background-color: lightgrey; margin-left: 10px; height: 100%">
+        <h5 style="font-weight: bold; margin: 10px">Search for a City:</h1>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" style="background-color: blue;" type="button"><i class="fas fa-search" type="button"></i></button>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <!-- ajax library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js "></script>
+    <!-- use of our own javascript file -->
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
