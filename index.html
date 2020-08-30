@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- Added link for my css file -->
     <link href="style.css" rel="stylesheet" type="text/css">
-    <title>Wheather-Dashboard</title>
+    <title>Weather-Dashboard</title>
 </head>
 
 <body>
@@ -24,18 +24,104 @@
     </header>
 
     <!-- left side of screen -->
-    <div class="col-md-4" style="background-color: lightgrey; margin-left: 10px; height: 100%">
-        <h5 style="font-weight: bold; margin: 10px">Search for a City:</h1>
-            <div class="row">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" style="background-color: blue;" type="button"><i class="fas fa-search" type="button"></i></button>
+    <!-- search box for the city -->
+    <div class="row">
+        <div class="col-md-4" style="background-color: lightgrey;  height: 100%">
+            <h5 style="font-weight: bold; margin: 10px">Search for a City:</h5>
+            <div style="margin-left: 10px;" class="input-group">
+                <input type="text" class="form-control" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" style="margin-right: 150px; background-color: blue;" type="button"><i class="fas fa-search" type="button"></i></button>
+                </div>
+            </div>
+
+            <!-- list of cities -->
+            <table class="table">
+                <tbody>
+                    <tr id="city1">
+                        <td></td>
+                    </tr>
+                    <tr id="city2">
+                        <td></td>
+                    </tr>
+                    <tr id="city3">
+                        <td></td>
+                    </tr>
+                    <tr id="city4">
+                        <td></td>
+                    </tr>
+                    <tr id="city5">
+                        <td></td>
+                    </tr>
+                    <tr id="city6">
+                        <td></td>
+                    </tr>
+                    <tr id="city7">
+                        <td></td>
+                    </tr>
+                    <tr id="city8">
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-8" style="height: 100%">
+            <div class="card" style="margin-top: 10px;">
+                <div class="card-body" id="cityName"></div>
+                <p>Temperature: <span id="temperature"></span>C</p><br>
+                <p>Humidity: <span id="humidity"></span>%</p><br>
+                <p>Wind Speed: <span id="wind"></span> MPH</p><br>
+                <p>UV Index: <span id="uv"></span></p><br>
+            </div>
+
+            <h5 style="margin-top: 10px;">5-Day Forecast:</h5>
+
+            <div class="card-deck" style="margin-right: 10px;">
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <h5 id="day1"></h5>
+                        <img id="day1Image">
+                        <p>Temperature: <span id="temperature1"></span>C</p><br>
+                        <p>Humidity: <span id="humidity1"></span>%</p><br>
+                    </div>
+                </div>
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <h5 id="day2"></h5>
+                        <img id="day2Image">
+                        <p>Temperature: <span id="temperature2"></span>C</p><br>
+                        <p>Humidity: <span id="humidity2"></span>%</p><br>
+                    </div>
+                </div>
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <h5 id="day3"></h5>
+                        <img id="day3Image">
+                        <p>Temperature: <span id="temperature3"></span>C</p><br>
+                        <p>Humidity: <span id="humidity3"></span>%</p><br>
+                    </div>
+                </div>
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <h5 id="day4"></h5>
+                        <img id="day4Image">
+                        <p>Temperature: <span id="temperature4"></span>C</p><br>
+                        <p>Humidity: <span id="humidity4"></span>%</p><br>
+                    </div>
+                </div>
+                <div class="card bg-primary">
+                    <div class="card-body text-center">
+                        <h5 id="day5"></h5>
+                        <img id="day5Image">
+                        <p>Temperature: <span id="temperature5"></span>C</p><br>
+                        <p>Humidity: <span id="humidity5"></span>%</p><br>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-
 
     <!-- ajax library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js "></script>
