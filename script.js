@@ -1,7 +1,13 @@
         // Event listener for our cat-button
         $(".btn").on("click", function() {
 
+
             var cityName = $(".form-control").val();
+
+            // save city on local storage
+            $("#city1").text(cityName);
+            localStorage.setItem("city1", cityName);
+
 
             // Storing our giphy API URL for a random cat image
             var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=837d2d3fb19dcc5f4d0f563d1c4af81f";
