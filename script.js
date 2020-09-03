@@ -1,12 +1,49 @@
-        // Event listener for our cat-button
+        var cityOnStorage1 = localStorage.getItem("city1");
+        var cityOnStorage2 = localStorage.getItem("city2");
+        var cityOnStorage3 = localStorage.getItem("city3");
+        var cityOnStorage4 = localStorage.getItem("city4");
+        var cityOnStorage5 = localStorage.getItem("city5");
+        var cityOnStorage6 = localStorage.getItem("city6");
+        var cityOnStorage7 = localStorage.getItem("city7");
+        var cityOnStorage8 = localStorage.getItem("city8");
+
+        // put back city list
+        $(document).ready(function() {
+
+            var listCityLength = localStorage.length;
+
+            for (i = 1; i < listCityLength; i++) {
+
+                var listCity = $(".table");
+                var cityName = localStorage.getItem(i);
+                var newCityName = $("<tr>" + cityName + "</tr>");
+                newCityName.text(cityName);
+
+                // It then adds this new tr to the table
+                listCity.prepend(newCityName);
+
+            }
+
+
+        });
+
+
+
+        // Event listener
         $(".btn").on("click", function() {
 
 
             var cityName = $(".form-control").val();
 
+            var listCity = $(".table");
+            var newCityName = $("<tr>" + cityName + "</tr>");
+            newCityName.text(cityName);
+
+            // It then adds this new tr to the table
+            listCity.prepend(newCityName);
+
             // save city on local storage
-            $("#city1").text(cityName);
-            localStorage.setItem("city1", cityName);
+            localStorage.setItem(localStorage.length + 1, cityName);
 
 
             // Storing our giphy API URL for a random cat image
