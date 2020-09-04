@@ -1,19 +1,13 @@
-        var cityOnStorage1 = localStorage.getItem("city1");
-        var cityOnStorage2 = localStorage.getItem("city2");
-        var cityOnStorage3 = localStorage.getItem("city3");
-        var cityOnStorage4 = localStorage.getItem("city4");
-        var cityOnStorage5 = localStorage.getItem("city5");
-        var cityOnStorage6 = localStorage.getItem("city6");
-        var cityOnStorage7 = localStorage.getItem("city7");
-        var cityOnStorage8 = localStorage.getItem("city8");
+        var cityLattitude = 0;
+        var cityLongitude = 0;
 
-        // put back city list
+        // put back city list when we reload
+
         $(document).ready(function() {
-
             var listCityLength = localStorage.length;
 
-            for (i = 1; i < listCityLength; i++) {
-
+            // loop going backward to keep the right way on the city list
+            for (i = listCityLength; i > 0; i--) {
                 var listCity = $(".table");
                 var cityName = localStorage.getItem(i);
                 var newCityName = $("<tr>" + cityName + "</tr>");
@@ -21,16 +15,15 @@
 
                 // It then adds this new tr to the table
                 listCity.prepend(newCityName);
-
+                newCityName.attr("class", "cityNameClass");
             }
-
-
         });
 
 
 
-        // Event listener
+        // Event listener click on search button
         $(".btn").on("click", function() {
+
 
 
             var cityName = $(".form-control").val();
@@ -38,8 +31,9 @@
             var listCity = $(".table");
             var newCityName = $("<tr>" + cityName + "</tr>");
             newCityName.text(cityName);
+            newCityName.attr("class", "cityNameClass");
 
-            // It then adds this new tr to the table
+            // adds this new tr to the table
             listCity.prepend(newCityName);
 
             // save city on local storage
@@ -49,6 +43,7 @@
             // Storing our giphy API URL for a random cat image
             var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=837d2d3fb19dcc5f4d0f563d1c4af81f";
             var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=837d2d3fb19dcc5f4d0f563d1c4af81f";
+            var queryURLUV = ""
 
             // Perfoming an AJAX GET request to our queryURL
             $.ajax({
@@ -58,11 +53,18 @@
 
             // After the data from the AJAX request comes back
             .then(function(response) {
+
+
                 $("#cityName").text(response.name + " (" + moment().format('L') + ")");
                 $("#temperature").text((response.main.temp - 273.15).toFixed(1));
                 $("#humidity").text(response.main.humidity);
                 $("#wind").text((response.wind.speed / 1.609344).toFixed(2));
 
+                cityLattitude = response.coord.lat;
+                cityLongitude = response.coord.lon;
+
+                console.log(cityLattitude + ";" + cityLongitude);
+                queryURLUV = "https://api.openweathermap.org/data/2.5/uvi?&appid=837d2d3fb19dcc5f4d0f563d1c4af81f&lat=" + cityLattitude + "&lon=" + cityLattitude;
             })
 
 
@@ -113,5 +115,35 @@
                 $("#temperature5").text((response.list[5].main.temp - 273.15).toFixed(1));
                 $("#humidity5").text(response.list[5].main.humidity);
 
-            });
+            })
+
+            // get uv index
+            .then(() => {
+                return $.ajax({
+                    url: queryURLUV,
+                    method: "GET"
+                })
+
+                // After the data from the AJAX request comes back
+                .then(response => {
+
+                    $("#uv").text(response.value);
+
+                })
+            })
+
         });
+
+        // $(".table").on('click', 'tr', function() {
+        //     $(".table").find('tr').click(function() {
+        //         alert('You clicked row ' + ($(this).attr("cityNameClass")));
+        //     });
+        // });
+
+        // Event listener click on on city
+        // $(".table").on('click', 'tr', function(e) {
+        //     e.preventDefault();
+        //     var id = $(this).attr("cityNameClass");
+        //     alert(id);
+        // });
+        // });
